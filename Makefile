@@ -7,6 +7,10 @@ GOBIN ?= $(shell go env GOPATH)/bin
 .PHONY: all
 all: build
 
+.PHONY: tag
+tag:
+	git tag "v${VERSION}"
+
 .PHONY: build
 build:
 	go build -ldflags=$(BUILD_LDFLAGS) -o $(BIN) .
