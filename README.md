@@ -1,9 +1,20 @@
 # inm
 
-inventory manager
+inventory manager.
+
+Performs a fuzzy search for files in inventory and copies the specified files to the current directory.
 
 ## Usage
 
+First, create a inventory directory.
+
+```bash
+mkdir ~/inventory
+```
+
+Then pack as many files as you like into the inventory.
+
+If you want to copy files from inventory, ask inm!
 ```bash
 inm
 ```
