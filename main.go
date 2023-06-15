@@ -16,6 +16,11 @@ const appDir = ".inventory"
 
 var revision = "HEAD"
 
+func fatal(err error) {
+	fmt.Fprintf(os.Stderr, "Error: %s\n", err)
+	os.Exit(1)
+}
+
 func dirWalk(base string) ([]string, error) {
 	var files []string
 	err := filepath.Walk(base, func(path string, info os.FileInfo, err error) error {
@@ -75,41 +80,35 @@ func main() {
 
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
-		os.Exit(1)
+		fatal(err)
 	}
 	files, err := dirWalk(filepath.Join(homeDir, appDir))
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
-		os.Exit(1)
+		fatal(err)
 	}
 
 	f, err := fzf.New()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
-		os.Exit(1)
+		fatal(err)
 	}
 
 	idxs, err := f.Find(files, func(i int) string { return files[i] })
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
-		os.Exit(1)
+		fatal(err)
 	}
 
 	src := filepath.Join(homeDir, appDir, files[idxs[0]])
 
 	wd, err := os.Getwd()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
-		os.Exit(1)
+		fatal(err)
 	}
 
 	dst := filepath.Join(wd, filepath.Base(src))
 
 	err = copy(src, dst)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
-		os.Exit(1)
+		fatal(err)
 	}
 
 }
