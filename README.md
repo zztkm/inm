@@ -6,6 +6,8 @@ Performs a fuzzy search for files in inventory and copies the specified files to
 
 ## Usage
 
+[![asciicast](https://asciinema.org/a/A2vNo785qJcxRjwM2KLSrg4km.svg)](https://asciinema.org/a/A2vNo785qJcxRjwM2KLSrg4km)
+
 First, create a inventory directory.
 
 ```bash
