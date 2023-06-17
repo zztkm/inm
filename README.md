@@ -11,7 +11,7 @@ Performs a fuzzy search for files in inventory and copies the specified files to
 First, create a inventory directory.
 
 ```bash
-mkdir ~/inventory
+mkdir ~/.inventory
 ```
 
 Then pack as many files as you like into the inventory.
