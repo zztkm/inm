@@ -10,7 +10,7 @@ import (
 	"github.com/koki-develop/go-fzf"
 )
 
-const version = "0.0.1"
+const version = "0.0.2"
 
 const appDir = ".inventory"
 
